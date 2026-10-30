@@ -1,0 +1,20 @@
+{
+  "name": "playwright-e2e-showcase",
+  "version": "1.0.0",
+  "description": "End-to-end test automation showcase with Playwright + TypeScript (Page Object Model, fixtures, CI)",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:smoke": "playwright test --grep @smoke",
+    "report": "playwright show-report",
+    "typecheck": "tsc --noEmit"
+  },
+  "author": "Sofía Martínez López",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^20.19.43",
+    "typescript": "^5.9.3"
+  }
+}
