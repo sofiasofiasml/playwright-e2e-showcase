@@ -9,10 +9,10 @@ on:
     - cron: '0 6 * * 1-5' # weekday mornings, catches regressions in the app under test
   workflow_dispatch:
 
+# Least privilege: every job can only read the repo by default.
+# Only publish-report gets the extra permissions it needs to deploy to Pages.
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: playwright-${{ github.ref }}
@@ -47,6 +47,9 @@ jobs:
     needs: test
     if: ${{ !cancelled() && github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
